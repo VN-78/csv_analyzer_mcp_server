@@ -12,10 +12,9 @@ cd to the `examples/snippets/clients` directory and run:
 # Create an MCP server
 mcp = FastMCP(
     name = "Sample_mcp_add",
-    host = "0.0.0.0", # only use for SSE Transport 
-    port = 8000
+    host = "localhost", # only use for SSE or Streamable HTTP 
+    port = 8050
 )
-
 
 # Add an addition tool
 @mcp.tool()
@@ -42,3 +41,8 @@ def greet_user(name: str, style: str = "friendly") -> str:
     }
 
     return f"{styles.get(style, styles['friendly'])} for someone named {name}."
+
+
+
+if __name__ == "__main__":
+    mcp.run(transport="streamable-http")
